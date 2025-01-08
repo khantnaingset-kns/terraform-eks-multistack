@@ -13,8 +13,6 @@ This repository contains Terraform configurations for provisioning an Amazon Ela
   - [IAM Stack](#iam-stack)
   - [EKS Stack](#eks-stack)
   - [Platform Stack](#platform-stack)
-- [Variables](#variables)
-- [Outputs](#outputs)
 - [Contributing](#contributing)
 - [License](#license)
 
