@@ -55,7 +55,6 @@ You can plan and apply changes for each stack individually or all at once.
 To apply a specific stack, navigate to the stack folder:
 
 ```bash
-cd stacks/vpc
 terraform plan
 terraform apply
 ```
