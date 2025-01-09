@@ -7,7 +7,6 @@ module "iam" {
 }
 
 module "vpc" {
-
   source = "terraform-aws-modules/vpc/aws"
 
   name = var.vpc_name
@@ -18,7 +17,6 @@ module "vpc" {
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 
   enable_nat_gateway = true
-
 }
 
 module "eks" {
@@ -41,5 +39,5 @@ module "eks" {
 module "platform" {
   source = "./modules/platform/"
 
-  depends_on = [ module.eks ]
+  depends_on = [module.eks]
 }
