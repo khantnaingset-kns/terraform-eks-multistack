@@ -42,3 +42,9 @@ variable "eks_admin_user_arn" {
   type        = string
   description = "The ARN of the IAM user that will have admin access to the EKS cluster"
 }
+
+variable "repo_ssh_private_key_path" {
+  description = "Path for SSH private key for the repository"
+  type        = string
+  sensitive   = true
+}

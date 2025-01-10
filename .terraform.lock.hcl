@@ -1,9 +1,26 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
+provider "registry.terraform.io/claranet/argocd" {
+  version     = "5.6.0-claranet0"
+  constraints = "5.6.0-claranet0"
+  hashes = [
+    "h1:c/KW0ATrt26GbnBdScmBUFkwCHvJDIgAi+TE9Sgu8EI=",
+    "zh:00088e1a9586ebbee7ce9307607f0df4763c6f746bad69df7ffdb2d371d3ab7e",
+    "zh:04ac3c5ccf470d72710e71ca974550c1c105928261170038ab0ee199b1ec535d",
+    "zh:04b651f51089911a8018b6329db07b8724daa2fb31c9fdb9a22d2486d60d0cfa",
+    "zh:24d08533f9bf2e0bba6f517f762c3e4ae3f43a8652e81c4c97175604e8c3acbc",
+    "zh:8875e950e4ff61ebb7de6965775652d5ceded201bc700312914ce802d7d3ae26",
+    "zh:95f46120c4e19aee120c348b365afa631d83d29aeaa677f5c5e1652a3a1aa60a",
+    "zh:a2c76559c126fa8fcf7466e9fb0ff3043545588b50506667689e8fa5a705a7e1",
+    "zh:b8979a9180580f6d40ca445503bbcd178852db14e64f885f0d06a8c23632c0c2",
+    "zh:df7c2aae009582fb62a2a1520a51b82baed46a13a8f8d5444f4a0c470fb645ee",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.82.2"
-  constraints = "5.82.2"
+  constraints = ">= 5.46.0, 5.82.2"
   hashes = [
     "h1:ce6Dw2y4PpuqAPtnQ0dO270dRTmwEARqnfffrE1VYJ8=",
     "zh:0262fc96012fb7e173e1b7beadd46dfc25b1dc7eaef95b90e936fc454724f1c8",

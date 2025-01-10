@@ -1,9 +1,3 @@
-resource "kubernetes_namespace" "karpenter_namespace" {
-  metadata {
-    name = "karpenter"
-  }
-}
-
 resource "helm_release" "argocd" {
   name             = "argocd"
   namespace        = "argocd"
@@ -13,6 +7,21 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   version    = "7.7.13"
 
+
+  set {
+    name  = "server.ingress.enabled"
+    value = "false" # We're using our own ingress
+  }
+
+  set {
+    name  = "server.extraArgs[0]"
+    value = "--basehref=/argocd"
+  }
+
+  set {
+    name  = "server.extraArgs[1]"
+    value = "--rootpath=/argocd"
+  }
 
   set {
     name  = "server.ingress.enabled"
@@ -51,7 +60,7 @@ resource "kubernetes_ingress_v1" "argocd_ui_server_https" {
     rule {
       http {
         path {
-          path      = "/"
+          path      = "/argocd"
           path_type = "Prefix"
           backend {
             service {
@@ -65,35 +74,6 @@ resource "kubernetes_ingress_v1" "argocd_ui_server_https" {
       }
     }
   }
+  depends_on = [helm_release.argocd]
 }
 
-resource "kubernetes_ingress_v1" "argocd_ui_server_grpc" {
-  metadata {
-    name      = "argocd-grpc-ingress"
-    namespace = "argocd"
-    annotations = {
-      "nginx.ingress.kubernetes.io/backend-protocol" = "GRPC"
-       "nginx.ingress.kubernetes.io/ssl-passthrough"  = "true"
-    }
-  }
-
-  spec {
-    ingress_class_name = "nginx"
-    rule {
-      http {
-        path {
-          path      = "/"
-          path_type = "Prefix"
-          backend {
-            service {
-              name = "argocd-server"
-              port {
-                name = "https"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}

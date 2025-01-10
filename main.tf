@@ -41,3 +41,14 @@ module "platform" {
 
   depends_on = [module.eks]
 }
+
+module "application" {
+  source = "./modules/application/"
+
+  repo_ssh_private_key_path = var.repo_ssh_private_key_path
+
+  providers = {
+    argocd = argocd
+  }
+
+}

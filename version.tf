@@ -13,5 +13,9 @@ terraform {
       source  = "hashicorp/helm"
       version = "2.17.0"
     }
+    argocd = {
+      source  = "claranet/argocd"
+      version = "5.6.0-claranet0"
+    }
   }
 }
