@@ -19,12 +19,9 @@ provider "helm" {
 }
 
 provider "argocd" {
-
-  server_addr        = "a52ab4ae6a979409695eab32a1e99b11-50c03e07ef4b7874.elb.us-east-1.amazonaws.com"
+  server_addr        = module.platform.nlb_address
   insecure           = true
   grpc_web_root_path = "argocd"
   username           = "admin"
   password           = module.platform.argocd_password
-
-
 }
